@@ -32,9 +32,10 @@ Press F12 to open Developer Tools.
 Open the Network tab.
 Refresh the page.
 Select the request similar to:
-/fd/addins/api/agents
+agents?workloads=SharedAgent
+Scroll down to Request Headers > Cookie
 Copy the entire Cookie request header value.
-2. Save the cookie
+3. Save the cookie to c:\temp
 
 Create:
 
