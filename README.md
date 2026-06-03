@@ -1,86 +1,119 @@
-Microsoft 365 Copilot Agent Inventory
+# Microsoft 365 Copilot Agent Inventory
 
-Export Microsoft 365 Copilot agent inventory and availability assignments from the Microsoft 365 Admin Center using the same internal API consumed by the admin portal.
+Export Microsoft 365 Copilot agent inventory and availability assignments from the Microsoft 365 Admin Center.
 
-Features
-Exports all Microsoft 365 Copilot agents
-Automatically follows pagination using the admin portal's nextLink token
-Captures:
-Agent Name
-App ID
-Title ID
-Publisher
-Created By
-Availability Settings
-Allowed Users and Groups
-Assignment Information
-Deployment Information
-Version Information
-Timestamps
-Exports results to CSV
-Requirements
-Microsoft 365 Global Administrator, Copilot Administrator, or equivalent permissions
-Access to the Microsoft 365 Admin Center
-PowerShell 5.1 or later
-Valid browser session
-Setup
-Open the Microsoft 365 Admin Center.
+This script uses the same internal API consumed by the Microsoft 365 Admin Center portal to retrieve Copilot agent data and export it to CSV.
+
+## Features
+
+* Exports all Microsoft 365 Copilot agents
+* Automatically follows pagination using the portal's `nextLink` token
+* Exports results to CSV
+* Captures:
+
+  * Agent name
+  * App ID
+  * Title ID
+  * Publisher
+  * Created by
+  * Availability settings
+  * Allowed users and groups
+  * Assignment information
+  * Deployment information
+  * Version information
+  * Timestamps
+
+## Requirements
+
+* Microsoft 365 Global Administrator, Copilot Administrator, or equivalent permissions
+* Access to the Microsoft 365 Admin Center
+* PowerShell 5.1 or later
+* Valid browser session
+
+## Setup
+
+### 1. Open the Microsoft 365 Admin Center
 
 Navigate to:
 
+```text
 Copilot > Agents > All Agents
-Press F12 to open Developer Tools.
-Select the Network tab.
+```
+
+### 2. Open Developer Tools
+
+Press **F12**, then select the **Network** tab.
+
 Refresh the page.
+
+### 3. Find the agents request
 
 Locate and select the request similar to:
 
+```text
 agents?workloads=SharedAgent
+```
 
 In the request details, expand:
 
+```text
 Request Headers
-Find the Cookie header.
-Copy the entire cookie value.
+```
 
-Create:
+Find the **Cookie** header and copy the entire cookie value.
 
+### 4. Save the cookie
+
+Create this file:
+
+```text
 C:\Temp\cookie.txt
+```
 
-Paste the cookie value into the file and save.
+Paste the cookie value into the file and save it.
 
-Usage
+## Usage
 
-Run:
+Run the script:
 
+```powershell
 .\Get-AgentsAvailability.ps1
+```
 
 The script will:
 
-Retrieve all Copilot agents.
-Follow all paging tokens automatically.
-Export results to:
+1. Retrieve all Copilot agents.
+2. Follow all paging tokens automatically.
+3. Export results to:
+
+```text
 M365-Copilot-Agent-Availability.csv
-Sample Output
-Title	AvailableTo	Publisher
-Sales Agent	All users in the organization can install	Microsoft
-HR Assistant	Specific users/groups can install	Contoso
-Project Status Report	No users in the organization can install	Fabrikam
-Security Notes
+```
+
+## Sample Output
+
+| Title                 | AvailableTo                               | Publisher |
+| --------------------- | ----------------------------------------- | --------- |
+| Sales Agent           | All users in the organization can install | Microsoft |
+| HR Assistant          | Specific users/groups can install         | Contoso   |
+| Project Status Report | No users in the organization can install  | Fabrikam  |
+
+## Security Notes
 
 This script uses an authenticated browser session cookie.
 
 Treat the cookie like a password:
 
-Never commit cookie.txt
-Never share your cookie
-Never publish exported data containing tenant information
+* Never commit `cookie.txt`
+* Never share your cookie
+* Never publish exported data containing tenant information
 
-The included .gitignore excludes common sensitive files.
+The included `.gitignore` excludes common sensitive files such as cookies, CSV exports, and logs.
 
-Disclaimer
+## Disclaimer
 
-This script uses undocumented Microsoft 365 Admin Center APIs that are not currently published through Microsoft Graph.
+This script uses an undocumented Microsoft 365 Admin Center API. Microsoft may change or remove this endpoint at any time.
+
 
 ## Admin Center
 
