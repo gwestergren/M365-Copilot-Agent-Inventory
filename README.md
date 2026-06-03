@@ -75,6 +75,18 @@ Disclaimer
 
 This script uses undocumented Microsoft 365 Admin Center APIs that are not currently published through Microsoft Graph.
 
+## Admin Center
+
+![Admin Center](screenshots/admin-center-agent-list.jpg)
+
+## Script Execution
+
+![Script Execution](screenshots/script-success.jpg)
+
+## CSV Output
+
+![CSV Output](screenshots/csv-output.jpg)
+
 Microsoft may change or remove these endpoints at any time.
 
 Credits
