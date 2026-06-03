@@ -24,18 +24,24 @@ Access to the Microsoft 365 Admin Center
 PowerShell 5.1 or later
 Valid browser session
 Setup
-1. Obtain your session cookie
 Open the Microsoft 365 Admin Center.
+
 Navigate to:
+
 Copilot > Agents > All Agents
 Press F12 to open Developer Tools.
-Open the Network tab.
+Select the Network tab.
 Refresh the page.
-Select the request similar to:
+
+Locate and select the request similar to:
+
 agents?workloads=SharedAgent
-Scroll down to Request Headers > Cookie
-Copy the entire Cookie request header value.
-3. Save the cookie to c:\temp
+
+In the request details, expand:
+
+Request Headers
+Find the Cookie header.
+Copy the entire cookie value.
 
 Create:
 
