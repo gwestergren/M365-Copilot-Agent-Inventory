@@ -427,3 +427,16 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Session cookies
+cookie.txt
+
+# Output files
+*.csv
+*.log
+
+# PowerShell
+*.ps1xml
+
+# VS Code
+.vscode/
