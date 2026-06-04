@@ -76,6 +76,8 @@ Paste the cookie value into the file and save it.
 
 Run the script:
 
+Best run in PS v7 as Administrator
+
 ```powershell
 .\Get-AgentsAvailability.ps1
 ```
